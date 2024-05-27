@@ -8,17 +8,21 @@ const Login: FC = () => {
         <label className={loginStyles.label} htmlFor="email">Email</label>
         <input
           className={loginStyles.input}
+          type="email"
           id="email"
         />
         <label className={loginStyles.label} htmlFor="password">Password</label>
         <input
           className={loginStyles.input}
+          type="password"
           id="password"
         />
         <button
           className={loginStyles.button}
           type="submit"
-        />
+        >
+          Войти
+        </button>
       </form>
     </div>
   )
