@@ -3,6 +3,7 @@ import appStyles from './app.module.css';
 import Login from '../../pages/login/login';
 import Header from '../header/header';
 import { loginRoure } from '../../utils/constants';
+import Menu from '../menu/menu';
 
 function App() {
   const location = useLocation();
@@ -11,6 +12,7 @@ function App() {
     <div className={appStyles.app}>
       {location.pathname !== loginRoure && <Header />}
       <main className={appStyles.main}>
+        {location.pathname !== loginRoure && <Menu />}
         <Routes>
           <Route
             path={loginRoure}
