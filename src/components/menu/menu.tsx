@@ -1,16 +1,23 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import menuStyles from './menu.module.css';
 import { NavLink } from 'react-router-dom';
 import { paymentsRoute, profileRoute, usersRoute } from '../../utils/constants';
 import bagIcon from '../../images/bag-icon.svg';
 import dollarIcon from '../../images/dollar-icon.svg';
 import { useResize } from '../../hooks/useResize';
+import BurgerButton from '../burger-button/burger-button';
 
 const Menu: FC = () => {
   const { width } = useResize();
-  
+  const [isOpen, setIsOpen] = useState(false);
+
+  function handleClick() {
+    setIsOpen(!isOpen);
+  }
+
   return (
-    <nav className={menuStyles.container}>
+    <nav className={`${menuStyles.container} ${!isOpen && width <= 798 ? menuStyles.hidden : ''}`}>
+      {width <= 798 && <BurgerButton isOpen={isOpen} onClick={handleClick} />}
       <h3 className={menuStyles.title}>Главное</h3>
       <NavLink
         to={profileRoute}

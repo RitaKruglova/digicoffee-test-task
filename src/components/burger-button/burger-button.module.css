@@ -1,0 +1,29 @@
+.button {
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  z-index: 1;
+  background-image: url(../../images/menu-closed.svg);
+  background-position: center;
+  opacity: 1;
+  -webkit-transition: background-image 0.5s, opacity 0.5s;
+  -o-transition: background-image 0.5s, opacity 0.5s;
+  transition: background-image 0.5s, opacity 0.5s;
+  position: absolute;
+  top: -53px;
+  left: 329px;
+}
+
+.button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.open {
+  width: 32px;
+  height: 32px;
+  background-image: url(../../images/menu-opened.svg);
+  background-position: center;
+  top: -42px;
+  left: 18px;
+}
