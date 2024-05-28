@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react';
 import headerStyles from './header.module.css';
 import logo from '../../images/logo.svg';
-import { useAppDispatch, useAppSelector } from '../../utils/reduxHooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { fetchUserById, fetchUsers } from '../../store/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { loginRoure } from '../../utils/constants';

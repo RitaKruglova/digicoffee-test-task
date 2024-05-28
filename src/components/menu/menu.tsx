@@ -4,8 +4,11 @@ import { NavLink } from 'react-router-dom';
 import { paymentsRoute, profileRoute, usersRoute } from '../../utils/constants';
 import bagIcon from '../../images/bag-icon.svg';
 import dollarIcon from '../../images/dollar-icon.svg';
+import { useResize } from '../../hooks/useResize';
 
 const Menu: FC = () => {
+  const { width } = useResize();
+  
   return (
     <nav className={menuStyles.container}>
       <h3 className={menuStyles.title}>Главное</h3>
