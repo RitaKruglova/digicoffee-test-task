@@ -21,7 +21,7 @@ const Profile: FC = () => {
       </div>
       <ProfileInfo name="Username" value={userInfo.username} />
       <ProfileInfo name="Email" value={userInfo.email} />
-      {localStorage.getItem('role') === 'admin' && <ProfileInfo name="Роль" value={userInfo.role} />}
+      {localStorage.getItem('role') === 'admin' && <ProfileInfo name="Роль" value="Администратор" />}
     </section>
   )
 }

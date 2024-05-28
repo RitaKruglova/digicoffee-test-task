@@ -21,7 +21,7 @@ const Header: FC = () => {
 
   function logout(): void {
     localStorage.removeItem('accessToken');
-    localStorage.removeItem('refrestToken');
+    localStorage.removeItem('refreshToken');
     localStorage.removeItem('userId');
     localStorage.removeItem('email');
     localStorage.removeItem('role');

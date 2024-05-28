@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import loginStyles from './login.module.css';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { fetchLogin, setValue } from '../../store/slices/userSlice';
@@ -31,6 +31,12 @@ const Login: FC = () => {
       console.log(err);
     }
   }
+
+  useEffect(() => {
+    if (localStorage.getItem('accessToken') || localStorage.getItem('refreshToken')) {
+      navigate(profileRoute);
+    }
+  }, [navigate]);
 
   return (
     <div className={loginStyles.container}>

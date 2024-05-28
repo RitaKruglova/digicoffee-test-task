@@ -1,0 +1,22 @@
+.container {
+  margin: 40px 0 0 30px;
+}
+
+.title {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  margin: 0;
+}
+
+.nameContainer {
+  display: flex;
+  gap: 30px;
+}
+
+@media screen and (max-width: 798px) {
+  .nameContainer {
+    flex-direction: column;
+    gap: 0;
+  }
+}
