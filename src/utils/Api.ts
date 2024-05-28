@@ -4,16 +4,21 @@ import { IApi, TMethod } from "./types";
 class Api {
   private _url: string;
   private _headers: HeadersInit;
+  private _accessToken: string | null;
+  private _refreshToken: string | null;
 
   constructor({ url, headers }: IApi) {
     this._url = url;
     this._headers = headers;
+    this._accessToken = null;
+    this._refreshToken = null;
   }
 
-  private _fetch(url: string = '', method: TMethod = 'GET', body?: any, headers: HeadersInit = {}): Promise<any> {
+  private _fetch(url: string = '', method: TMethod = 'GET', body?: any, headers: HeadersInit = {}, isRetry = false): Promise<any> {
     return fetch(`${this._url}${url}`, {
       method,
       headers: {
+        'Authorization': `Bearer ${this._accessToken}`,
         ...this._headers,
         ...headers
       },
@@ -21,37 +26,55 @@ class Api {
     })
       .then(checkResponse)
       .catch(err => {
+        if (err.status === 401 && !isRetry) {
+          this.refreshToken()
+            .then(data => {
+              this.setAccessToken(data.access);
+              this._fetch(url, method, body, headers, true)
+            })
+            .catch(err => {
+              return Promise.reject(err);
+            })
+        }
         return Promise.reject(err);
       })
   }
 
+  setAccessToken(token: string | null) {
+    this._accessToken = token;
+  }
+
+  setRefreshToken(token: string | null) {
+    this._refreshToken = token;
+  }
+
   login(emailValue: string, passwordValue: string) {
-    return this._fetch('/token', 'POST', {
+    return this._fetch('/token/', 'POST', {
       email: emailValue,
       password: passwordValue
     });
   }
 
-  refreshToken(refreshToken: string) {
-    return this._fetch('/token/refresh', 'POST', {
-      refresh: refreshToken
+  refreshToken() {
+    return this._fetch('/token/refresh/', 'POST', {
+      refresh: this._refreshToken
     });
   }
 
   getUsers() {
-    return this._fetch('/users');
+    return this._fetch('/users/');
   }
 
   getUserById(id: number) {
-    return this._fetch(`/users/${id}`);
+    return this._fetch(`/users/${id}/`);
   }
  
   getPayments() {
-    return this._fetch('/payments');
+    return this._fetch('/payments/');
   }
 
   getPaymentById(paymentId: number) {
-    return this._fetch(`/payments/${paymentId}`);
+    return this._fetch(`/payments/${paymentId}/`);
   }
 }
 

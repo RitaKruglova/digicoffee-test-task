@@ -3,5 +3,13 @@ export function checkResponse(res: Response): Promise<any> {
     return res.json();
   }
 
-  return Promise.reject(new Error(`Что-то пошло не так: ${res.status}`));
+  return res.json().then(errorBody => {
+    return Promise.reject({
+      message: `Что-то пошло не так: ${res.status}`,
+      status: res.status,
+      statusText: res.statusText,
+      url: res.url,
+      body: errorBody
+    });
+  });
 }
