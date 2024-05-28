@@ -1,11 +1,14 @@
 import { FC } from 'react';
 import loginStyles from './login.module.css';
 import { useAppDispatch, useAppSelector } from '../../utils/reduxHooks';
-import { fetchLogin, setValue } from '../../store/slices/formSlice';
+import { fetchLogin, setValue } from '../../store/slices/userSlice';
+import { useNavigate } from 'react-router-dom';
+import { profileRoute } from '../../utils/constants';
 
 const Login: FC = () => {
-  const values = useAppSelector(store => store.form.values)
+  const values = useAppSelector(store => store.user.values);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>): void {
     const { name, value } = event.target;
@@ -23,6 +26,7 @@ const Login: FC = () => {
         emailValue: values.email,
         passwordValue: values.password
       }));
+      navigate(profileRoute);
     } catch (err) {
       console.log(err);
     }
@@ -52,6 +56,7 @@ const Login: FC = () => {
         <button
           className={loginStyles.button}
           type="submit"
+          disabled={!values.email || !values.password}
         >
           Войти
         </button>

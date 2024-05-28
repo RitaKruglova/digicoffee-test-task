@@ -1,10 +1,5 @@
 import store from '../store';
 
-export type TUser = {
-  email: string,
-  role: 'admin' | 'user',
-}
-
 export type TUserValues = {
   email: string;
   password: string;
@@ -15,9 +10,9 @@ export type TNameAndValue = {
   value: string;
 }
 
-export type TFormSliceState = {
-  user: TUser;
+export type TUserSliceState = {
   values: TUserValues;
+  userInfo: TUserInfo;
 }
 
 export interface IApi {
@@ -33,6 +28,22 @@ export type TLoginArgs = {
 export type TTokens = {
   access: string;
   refresh: string;
+}
+
+export type TUserInfo = {
+  id: number;
+  username: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  role: string;
+}
+
+export type TUsersResponse = {
+  count: number;
+  next: string;
+  previous: string;
+  results: TUserInfo[];
 }
 
 export type TMethod = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
