@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid #93c5fd;
+}
+
+.logo {
+  width: 264px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-right: 100px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.greeting {
+  margin: 0;
+}
+
+.role {
+  margin: 0;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  padding: 0;
+}
+.button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 798px) {
+  .container {
+    flex-direction: column;
+    align-items: self-start;
+    height: fit-content;
+  }
+
+  .info {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 67px;
+    padding-bottom: 12px;
+    margin: 0;
+  }
+}

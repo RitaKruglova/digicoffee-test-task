@@ -10,15 +10,15 @@ class Api {
   constructor({ url, headers }: IApi) {
     this._url = url;
     this._headers = headers;
-    this._accessToken = null;
-    this._refreshToken = null;
+    this._accessToken = localStorage.getItem('accessToken');
+    this._refreshToken = localStorage.getItem('refreshToken');
   }
 
   private _fetch(url: string = '', method: TMethod = 'GET', body?: any, headers: HeadersInit = {}, isRetry = false): Promise<any> {
     return fetch(`${this._url}${url}`, {
       method,
       headers: {
-        'Authorization': `Bearer ${this._accessToken}`,
+        'Authorization': `Token ${this._accessToken}`,
         ...this._headers,
         ...headers
       },

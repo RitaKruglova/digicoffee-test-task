@@ -55,7 +55,9 @@ const userSlice = createSlice({
       .addCase(fetchLogin.fulfilled, (state, action: PayloadAction<TTokens>) => {
         localStorage.setItem('accessToken', action.payload.access);
         localStorage.setItem('refreshToken', action.payload.refresh);
-        localStorage.setItem('email', state.userInfo.email);
+        api.setAccessToken(action.payload.access);
+        api.setRefreshToken(action.payload.refresh);
+        localStorage.setItem('email', state.values.email);
         state.userInfo.email = state.values.email;
 
         if (state.values.email === 'rik@bk.ru') {
@@ -65,9 +67,11 @@ const userSlice = createSlice({
           state.userInfo.role = 'user';
           localStorage.setItem('role', 'user');
         }
+
       })
       .addCase(fetchUsers.fulfilled, (state, action: PayloadAction<TUsersResponse>) => {
         const foundUser = action.payload.results.find((user) => user.email === localStorage.getItem('email'));
+        console.log(foundUser);
         if (foundUser) {
           state.userInfo = foundUser;
           localStorage.setItem('userId', String(foundUser.id));

@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../utils/reduxHooks';
 import { fetchLogin, setValue } from '../../store/slices/userSlice';
 import { useNavigate } from 'react-router-dom';
 import { profileRoute } from '../../utils/constants';
+import { api } from '../../utils/Api';
 
 const Login: FC = () => {
   const values = useAppSelector(store => store.user.values);
