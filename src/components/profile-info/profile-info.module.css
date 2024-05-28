@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  gap: 20px;
+  width: fit-content;
+}
+
+.name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
+  color: #21272a;
+}
+
+.value {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  color: #21272a;
+}

@@ -3,7 +3,12 @@ import profileStyles from './profile.module.css';
 
 const Profile: FC = () => {
   return (
-    <h2>d</h2>
+    <section className={profileStyles.container}>
+      <h2 className={profileStyles.title}>Мой профиль</h2>
+      <div className={profileStyles.nameContainer}>
+        
+      </div>
+    </section>
   )
 }
 
