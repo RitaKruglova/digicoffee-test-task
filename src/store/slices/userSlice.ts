@@ -71,7 +71,7 @@ const userSlice = createSlice({
       })
       .addCase(fetchUsers.fulfilled, (state, action: PayloadAction<TUsersResponse>) => {
         const foundUser = action.payload.results.find((user) => user.email === localStorage.getItem('email'));
-        console.log(foundUser);
+        console.log(action.payload);
         if (foundUser) {
           state.userInfo = foundUser;
           localStorage.setItem('userId', String(foundUser.id));
