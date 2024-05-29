@@ -13,6 +13,11 @@ export type TNameAndValue = {
 export type TUserSliceState = {
   values: TUserValues;
   userInfo: TUserInfo;
+  users: TUsersResponse;
+}
+
+export type TMenuSliceState = {
+  isMenuOpen: boolean;
 }
 
 export interface IApi {
@@ -44,6 +49,10 @@ export type TUsersResponse = {
   next: string;
   previous: string;
   results: TUserInfo[];
+}
+
+export type TPageClickEvent = {
+  selected: number;
 }
 
 export type TMethod = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';

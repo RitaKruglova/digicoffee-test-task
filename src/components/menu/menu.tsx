@@ -6,18 +6,21 @@ import bagIcon from '../../images/bag-icon.svg';
 import dollarIcon from '../../images/dollar-icon.svg';
 import { useResize } from '../../hooks/useResize';
 import BurgerButton from '../burger-button/burger-button';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { setIsMenuOpen } from '../../store/slices/menuSlice';
 
 const Menu: FC = () => {
   const { width } = useResize();
-  const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const isMenuOpen = useAppSelector(store => store.menu.isMenuOpen);
 
   function handleClick() {
-    setIsOpen(!isOpen);
+    dispatch(setIsMenuOpen());
   }
 
   return (
-    <nav className={`${menuStyles.container} ${!isOpen && width <= 798 ? menuStyles.hidden : ''}`}>
-      {width <= 798 && <BurgerButton isOpen={isOpen} onClick={handleClick} />}
+    <nav className={`${menuStyles.container} ${!isMenuOpen && width <= 798 ? menuStyles.hidden : ''}`}>
+      {width <= 798 && <BurgerButton isOpen={isMenuOpen} onClick={handleClick} />}
       <h3 className={menuStyles.title}>Главное</h3>
       <NavLink
         to={profileRoute}

@@ -39,7 +39,12 @@ const initialState = {
     email: '',
     role: ''
   },
-  users: {}
+  users: {
+    count: 0,
+    next: '',
+    previous: '',
+    results: [],
+  }
 } as TUserSliceState;
 
 const userSlice = createSlice({
@@ -71,7 +76,9 @@ const userSlice = createSlice({
       })
       .addCase(fetchUsers.fulfilled, (state, action: PayloadAction<TUsersResponse>) => {
         const foundUser = action.payload.results.find((user) => user.email === localStorage.getItem('email'));
-        console.log(action.payload);
+        
+        state.users = action.payload;
+
         if (foundUser) {
           state.userInfo = foundUser;
           localStorage.setItem('userId', String(foundUser.id));

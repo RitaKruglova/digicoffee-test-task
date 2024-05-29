@@ -25,4 +25,5 @@
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  position: relative;
 }

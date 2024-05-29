@@ -2,9 +2,10 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import appStyles from './app.module.css';
 import Login from '../../pages/login/login';
 import Header from '../header/header';
-import { loginRoure, profileRoute } from '../../utils/constants';
+import { loginRoure, profileRoute, usersRoute } from '../../utils/constants';
 import Menu from '../menu/menu';
 import Profile from '../../pages/profile/profile';
+import Users from '../../pages/users/users';
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,10 @@ function App() {
           <Route
             path={profileRoute}
             element={<Profile />}
+          />
+          <Route
+            path={usersRoute}
+            element={<Users />}
           />
         </Routes>
       </main>

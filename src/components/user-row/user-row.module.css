@@ -1,0 +1,19 @@
+.container {
+  padding: 12px 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 150px);
+  justify-content: space-between;
+  border-top: 0.50px solid #94a3b8;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container:first-of-type {
+  border-top: none;
+}
+
+@media screen and (max-width: 1140px) {
+  .container {
+    grid-template-columns: repeat(5, 120px);
+  }
+}
