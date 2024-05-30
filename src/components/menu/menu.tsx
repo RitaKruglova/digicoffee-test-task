@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import menuStyles from './menu.module.css';
 import { NavLink } from 'react-router-dom';
 import { paymentsRoute, profileRoute, usersRoute } from '../../utils/constants';

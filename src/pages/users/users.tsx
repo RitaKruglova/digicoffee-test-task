@@ -10,6 +10,7 @@ import backwardButton from '../../images/backward.svg';
 import forwardButton from '../../images/forward.svg';
 import ArrowButton from '../../components/arrow-button/arrow-button';
 import Overlay from '../../components/overlay/overlay';
+import Pagination from '../../components/pagination/pagination';
 
 const Users: FC = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Users: FC = () => {
     if (localStorage.getItem('role') === 'user') {
       navigate(-1);
     }
-  }, []);
+  }, [navigate]);
 
   const handlePageClick = (event: TPageClickEvent) => {
     setCurrentPage(event.selected + 1);
@@ -65,27 +66,33 @@ const Users: FC = () => {
         )}
       </div>
       {users.results.length > 5 &&
-        <div className={usersStyles.paginationContainer}>
-          <p className={usersStyles.paragraph}>{`Showing ${currentUsers.length} of ${users.results.length} Results`}</p>
-          <ReactPaginate
-            previousLabel={<ArrowButton imagePath={backwardButton} alt="Кнопка назад" />}
-            nextLabel={<ArrowButton imagePath={forwardButton} alt="Кнопка вперёд" />}
-            breakLabel={"..."}
-            pageCount={pagesQuantity}
-            marginPagesDisplayed={2}
-            onPageChange={handlePageClick}
-            containerClassName={usersStyles.pagination}
-            pageClassName={usersStyles.pageButton}
-            pageLinkClassName={usersStyles.pageLink}
-            previousClassName={usersStyles.backwardButton}
-            previousLinkClassName={usersStyles.backwardLink}
-            nextClassName={usersStyles.forwardButton}
-            nextLinkClassName={usersStyles.forwardLink}
-            breakClassName={usersStyles.break}
-            breakLinkClassName={usersStyles.breakLink}
-            activeClassName={usersStyles.active}
-          />
-        </div>
+        <Pagination
+          currentItemsQuantity={currentUsers.length}
+          allItemsQuantity={users.results.length}
+          pagesQuantity={pagesQuantity}
+          handlePageClick={handlePageClick}
+        />
+        // <div className={usersStyles.paginationContainer}>
+        //   <p className={usersStyles.paragraph}>{`Showing ${currentUsers.length} of ${users.results.length} Results`}</p>
+        //   <ReactPaginate
+        //     previousLabel={<ArrowButton imagePath={backwardButton} alt="Кнопка назад" />}
+        //     nextLabel={<ArrowButton imagePath={forwardButton} alt="Кнопка вперёд" />}
+        //     breakLabel={"..."}
+        //     pageCount={pagesQuantity}
+        //     marginPagesDisplayed={2}
+        //     onPageChange={handlePageClick}
+        //     containerClassName={usersStyles.pagination}
+        //     pageClassName={usersStyles.pageButton}
+        //     pageLinkClassName={usersStyles.pageLink}
+        //     previousClassName={usersStyles.backwardButton}
+        //     previousLinkClassName={usersStyles.backwardLink}
+        //     nextClassName={usersStyles.forwardButton}
+        //     nextLinkClassName={usersStyles.forwardLink}
+        //     breakClassName={usersStyles.break}
+        //     breakLinkClassName={usersStyles.breakLink}
+        //     activeClassName={usersStyles.active}
+        //   />
+        // </div>
       }
     </section>
   )

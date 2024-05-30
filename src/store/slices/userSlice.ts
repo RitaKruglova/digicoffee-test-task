@@ -78,6 +78,12 @@ const userSlice = createSlice({
         const foundUser = action.payload.results.find((user) => user.email === localStorage.getItem('email'));
         
         state.users = action.payload;
+        // state.users.results = [
+        //   ...state.users.results,
+        //   ...state.users.results,
+        //   ...state.users.results,
+        //   ...state.users.results,
+        // ]
 
         if (foundUser) {
           state.userInfo = foundUser;
