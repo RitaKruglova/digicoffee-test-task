@@ -12,6 +12,10 @@
   border-top: none;
 }
 
+.four {
+  grid-template-columns: repeat(4, 187.5px);
+}
+
 @media screen and (max-width: 1140px) {
   .container {
     grid-template-columns: repeat(5, 120px);

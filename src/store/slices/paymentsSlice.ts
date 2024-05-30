@@ -19,23 +19,7 @@ const initialState: TPaymentsSliceState = {
     count: 0,
     next: '',
     previous: '',
-    results: [
-      {
-        id: 0,
-        user: {
-          id: 0,
-          username: '',
-          first_name: '',
-          last_name: '',
-          email: '',
-          role: ''
-        },
-        product: '',
-        price: 0,
-        currency: 'RUB',
-        pay_date: ''
-      }
-    ]
+    results: []
   }
 };
 

@@ -31,7 +31,7 @@ const Table : FC<ITableProps> = ({ items, columns }) => {
 
   return (
       <>
-      <div className={tableStyles.userContainer}>
+      <div className={tableStyles.container}>
         <Row values={columns} isHeading />
         {currentItems ? (
           currentItems.map((item) => (

@@ -6,12 +6,6 @@
   z-index: 0;
 }
 
-.userContainer {
-  box-shadow: 0 0 1px 0 rgba(9, 30, 66, 0.31), 0 3px 8px 0 rgba(9, 30, 66, 0.16);
-  width: fit-content;
-  height: 302px;
-}
-
 @media screen and (max-width: 1140px) {
   .container {
     width: 640px;

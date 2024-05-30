@@ -9,7 +9,7 @@ interface IRowProps {
 
 const Row: FC<IRowProps> = ({ values, isHeading = false }) => {
   return (
-    <div className={rowStyles.container}>
+    <div className={`${rowStyles.container} ${values.length === 4 ? rowStyles.four : ''}`}>
       {values.map((value, index) => (
         <Cell key={index} text={value} isBold={index !== 0 || isHeading} />
       ))}

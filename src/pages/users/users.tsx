@@ -1,16 +1,9 @@
-import { FC, useEffect, useMemo, useState } from 'react';
+import { FC, useEffect } from 'react';
 import usersStyles from './users.module.css';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import { fetchUsers } from '../../store/slices/userSlice';
-import UserRow from '../../components/row/row';
 import { useNavigate } from 'react-router-dom';
-import { TPageClickEvent } from '../../utils/types';
-import ReactPaginate from 'react-paginate';
-import backwardButton from '../../images/backward.svg';
-import forwardButton from '../../images/forward.svg';
-import ArrowButton from '../../components/arrow-button/arrow-button';
 import Overlay from '../../components/overlay/overlay';
-import Pagination from '../../components/pagination/pagination';
 import Table from '../../components/table/table';
 
 const Users: FC = () => {

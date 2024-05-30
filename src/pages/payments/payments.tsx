@@ -5,7 +5,8 @@ import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import BarChart from '../../components/bar-chart/bar-chart';
 import { fetchPayments } from '../../store/slices/paymentsSlice';
 import Table from '../../components/table/table';
-import { TUserInfo } from '../../utils/types';
+import { TPayment, TUserInfo } from '../../utils/types';
+import PieChart from '../../components/pie-chart/pie-chart';
 
 const Payments: FC = () => {
   const dispatch = useAppDispatch();
@@ -73,7 +74,24 @@ const Payments: FC = () => {
           />
         </div>
         <div className={paymentsStyles.pieContainer}>
-
+          <PieChart
+            items={payments.results.reduce((groupedPayments: {[key: string]: number}, payment: TPayment) => {
+              if (payment.product in groupedPayments) {
+                groupedPayments[payment.product] += payment.price;
+              } else {
+                groupedPayments[payment.product] = payment.price;
+              }
+              return groupedPayments;
+            }, {} as {[key: string]: number})}
+            header="Отчёт по продуктам"
+          />
+          <PieChart
+            items={payments.results.reduce((allPayments, payment) => {
+              allPayments['Всего'] += payment.price;
+              return allPayments;
+            }, {'Всего': 0})}
+            header="Всего потрачено"
+          />
         </div>
       </div>
     </section>
