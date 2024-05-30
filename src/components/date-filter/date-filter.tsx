@@ -1,28 +1,27 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { setStartDate, setEndDate, setExactDate, setFilterType } from '../../store/slices/paymentsSlice';
 import dateFilterStyles from './date-filter.module.css';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 
 const DateFilter: React.FC = () => {
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
-  const [exactDate, setExactDate] = useState<Date | null>(null);
-  const [filterType, setFilterType] = useState<'exact' | 'range'>('exact');
+  const dispatch = useAppDispatch();
+  const startDate = useAppSelector(store => store.payments.startDate);
+  const endDate = useAppSelector(store => store.payments.endDate);
+  const exactDate = useAppSelector(store => store.payments.exactDate);
+  const filterType = useAppSelector(store => store.payments.filterType);
 
   const handleExactDateChange = (date: Date | null) => {
-    setExactDate(date);
-    setStartDate(null);
-    setEndDate(null);
+    dispatch(setExactDate(date));
   };
 
   const handleStartDateChange = (date: Date | null) => {
-    setStartDate(date);
-    setExactDate(null);
+    dispatch(setStartDate(date));
   };
 
   const handleEndDateChange = (date: Date | null) => {
-    setEndDate(date);
-    setExactDate(null);
+    dispatch(setEndDate(date));
   };
 
   return (
@@ -34,7 +33,7 @@ const DateFilter: React.FC = () => {
             type="radio"
             value="exact"
             checked={filterType === 'exact'}
-            onChange={() => setFilterType('exact')}
+            onChange={() => dispatch(setFilterType('exact'))}
           />
           Точная дата
         </label>
@@ -44,7 +43,7 @@ const DateFilter: React.FC = () => {
             type="radio"
             value="range"
             checked={filterType === 'range'}
-            onChange={() => setFilterType('range')}
+            onChange={() => dispatch(setFilterType('range'))}
           />
           Интервал дат
         </label>

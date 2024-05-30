@@ -44,7 +44,8 @@ const initialState = {
     next: '',
     previous: '',
     results: [],
-  }
+  },
+  isAuthorized: true
 } as TUserSliceState;
 
 const userSlice = createSlice({
@@ -78,20 +79,23 @@ const userSlice = createSlice({
         const foundUser = action.payload.results.find((user) => user.email === localStorage.getItem('email'));
         
         state.users = action.payload;
-        // state.users.results = [
-        //   ...state.users.results,
-        //   ...state.users.results,
-        //   ...state.users.results,
-        //   ...state.users.results,
-        // ]
+
+        state.isAuthorized = true;
 
         if (foundUser) {
           state.userInfo = foundUser;
           localStorage.setItem('userId', String(foundUser.id));
         }
       })
+      .addCase(fetchUsers.rejected, (state) => {
+        state.isAuthorized = false;
+      })
       .addCase(fetchUserById.fulfilled, (state, action: PayloadAction<TUserInfo>) => {
         state.userInfo = action.payload;
+        state.isAuthorized = true;
+      })
+      .addCase(fetchUserById.rejected, (state) => {
+        state.isAuthorized = false;
       })
   }
 })

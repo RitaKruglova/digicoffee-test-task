@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useCallback, useEffect } from 'react';
 import headerStyles from './header.module.css';
 import logo from '../../images/logo.svg';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
@@ -10,6 +10,7 @@ const Header: FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const userInfo = useAppSelector(store => store.user.userInfo);
+  const isAuthorized = useAppSelector(store => store.user.isAuthorized);
 
   useEffect(() => {
     if (localStorage.getItem('userId')) {
@@ -19,7 +20,7 @@ const Header: FC = () => {
     }
   }, [dispatch]);
 
-  function logout(): void {
+  const logout = useCallback(() => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('userId');
@@ -27,7 +28,14 @@ const Header: FC = () => {
     localStorage.removeItem('role');
 
     navigate(loginRoure);
-  }
+  }, [navigate]);
+
+  
+  useEffect(() => {
+    if (!isAuthorized) {
+      logout();
+    }
+  }, [isAuthorized, logout]);
 
   return (
     <header className={headerStyles.container}>

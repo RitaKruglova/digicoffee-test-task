@@ -4,7 +4,7 @@
 
 ## Стек
 
-JavaScript, CSS, CSS Modules, React, Redux Toolkit, react-paginate, React Router, react-datepicker
+JavaScript, CSS, CSS Modules, React, Redux Toolkit, react-paginate, React Router, react-datepicker, react-chartjs-2
 
 ## Функционал
 
@@ -15,6 +15,7 @@ JavaScript, CSS, CSS Modules, React, Redux Toolkit, react-paginate, React Router
 4. Страница покупок для администратора и юзера разные. Администратор видит графики по всем покупкам, юзер - по своим.
 5. Добавлен адаптив для различных устройств
 6. Фильтр по дате реализован с помощью библиотеки react-datepicker
+7. Графики сделаны с помощью библиотеки react-chartjs-2
 
 ## Установка и запуск
 

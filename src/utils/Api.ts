@@ -57,8 +57,8 @@ class Api {
 
   refreshToken() {
     return this._fetch('/token/refresh/', 'POST', {
-      refresh: this._refreshToken
-    });
+      refresh: this._refreshToken 
+    }, {}, true);
   }
 
   getUsers() {
@@ -69,8 +69,17 @@ class Api {
     return this._fetch(`/users/${id}/`);
   }
  
-  getPayments() {
-    return this._fetch('/payments/');
+  getPayments(startDate: Date | null, endDate: Date | null, exactDate: Date | null) {
+    const startDateISO = startDate?.toISOString().slice(0, 10);
+    const endDateISO = endDate?.toISOString().slice(0, 10);
+    const exactDateISO = exactDate?.toISOString().slice(0, 10);
+    if (startDate && endDate) {
+      return this._fetch(`/payments/?date_from=${startDateISO}&date_to=${endDateISO}`);
+    } else if (exactDate) {
+      return this._fetch(`/payments/?date=${exactDateISO}`);
+    } else {
+      return this._fetch('/payments/');
+    }
   }
 
   getPaymentById(paymentId: number) {

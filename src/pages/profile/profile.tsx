@@ -1,18 +1,12 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import profileStyles from './profile.module.css';
 import ProfileInfo from '../../components/profile-info/profile-info';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
-import { fetchUserById } from '../../store/slices/userSlice';
+import { useAppSelector } from '../../hooks/reduxHooks';
 import { useNavigate } from 'react-router-dom';
 
 const Profile: FC = () => {
   const userInfo = useAppSelector(store => store.user.userInfo);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    dispatch(fetchUserById(Number(localStorage.getItem('userId'))));
-  }, [dispatch]);
 
   function handleBackClick(): void {
     navigate(-1);

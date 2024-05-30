@@ -14,6 +14,7 @@ export type TUserSliceState = {
   values: TUserValues;
   userInfo: TUserInfo;
   users: TUsersResponse;
+  isAuthorized: boolean;
 }
 
 export type TMenuSliceState = {
@@ -53,6 +54,40 @@ export type TUsersResponse = {
 
 export type TPageClickEvent = {
   selected: number;
+}
+
+export type TPayment = {
+  id: number;
+  user: TUserInfo;
+  product: string;
+  price: number;
+  currency: string;
+  pay_date: string;
+}
+
+export type TPayments = {
+  count: number;
+  next: string;
+  previous: string;
+  results: TPayment[];
+}
+
+export type TPaymentsSliceState = {
+  startDate: Date | null;
+  endDate: Date | null;
+  exactDate: Date | null;
+  filterType: 'exact' | 'range';
+  payments: TPayments
+}
+
+export type TPaymentsArgs = {
+  startDate: Date | null;
+  endDate: Date | null;
+  exactDate: Date | null;
+}
+
+export interface IHourValues {
+  [key: number]: number;
 }
 
 export type TMethod = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
