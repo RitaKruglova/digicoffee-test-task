@@ -4,6 +4,8 @@ import DateFilter from '../../components/date-filter/date-filter';
 import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
 import BarChart from '../../components/bar-chart/bar-chart';
 import { fetchPayments } from '../../store/slices/paymentsSlice';
+import Table from '../../components/table/table';
+import { TUserInfo } from '../../utils/types';
 
 const Payments: FC = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +13,19 @@ const Payments: FC = () => {
   const endDate = useAppSelector(store => store.payments.endDate);
   const exactDate = useAppSelector(store => store.payments.exactDate);
   const filterType = useAppSelector(store => store.payments.filterType);
+  const payments = useAppSelector(store => store.payments.payments);
   const [isFiltersVisible, setIsFilterVisible] = useState<boolean>(false);
+
+  function formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  }
 
   function handleFiltrersVisibility(): void {
     setIsFilterVisible(!isFiltersVisible);
@@ -47,6 +61,16 @@ const Payments: FC = () => {
       <div className={paymentsStyles.chartsContainer}>
         <div className={paymentsStyles.barContainer}>
           <BarChart />
+          <Table
+            items={payments.results.map(({ id, user, product, price, pay_date,  }: { id: number; user: TUserInfo; product: string; price: number; pay_date: string; }) => ({
+              id,
+              user: user.username,
+              product,
+              price,
+              pay_date: formatDate(pay_date),
+            }))}
+            columns={['Пользователь', 'Кофе', 'Цена', 'Дата Покупки']}
+          />
         </div>
         <div className={paymentsStyles.pieContainer}>
 
