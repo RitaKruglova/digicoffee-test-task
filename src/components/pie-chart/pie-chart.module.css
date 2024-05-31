@@ -31,3 +31,18 @@
     gap: 10px;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .container {
+    width: 170px;
+    padding: 0;
+  }
+
+  .title {
+    font-size: 13px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }  
+}

@@ -14,3 +14,10 @@
     height: 285px;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .container {
+    width: 350px;
+    height: 228px;
+  }
+}

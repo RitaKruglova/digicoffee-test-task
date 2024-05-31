@@ -52,3 +52,9 @@
     width: 500px;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .pieContainer {
+    width: 350px;
+  }
+}

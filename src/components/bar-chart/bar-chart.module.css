@@ -58,3 +58,9 @@
     font-size: 12px;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .container {
+    width: 350px;
+  }
+}

@@ -5,6 +5,7 @@ import backwardButton from '../../images/backward.svg';
 import forwardButton from '../../images/forward.svg';
 import ArrowButton from '../../components/arrow-button/arrow-button';
 import { TPageClickEvent } from '../../utils/types';
+import { useResize } from '../../hooks/useResize';
 
 interface IPaginationProps {
   currentItemsQuantity: number;
@@ -14,9 +15,13 @@ interface IPaginationProps {
 }
 
 const Pagination: FC<IPaginationProps> = ({ currentItemsQuantity, allItemsQuantity, pagesQuantity, handlePageClick }) => {
+  const { width } = useResize();
+
   return (
     <div className={paginationStyles.container}>
-      <p className={paginationStyles.paragraph}>{`Showing ${currentItemsQuantity} of ${allItemsQuantity} Results`}</p>
+      {width > 550 &&
+        <p className={paginationStyles.paragraph}>{`Showing ${currentItemsQuantity} of ${allItemsQuantity} Results`}</p>
+      }
       <ReactPaginate
         previousLabel={<ArrowButton imagePath={backwardButton} alt="Кнопка назад" />}
         nextLabel={<ArrowButton imagePath={forwardButton} alt="Кнопка вперёд" />}
