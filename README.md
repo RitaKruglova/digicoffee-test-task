@@ -19,21 +19,13 @@ JavaScript, CSS, CSS Modules, React, Redux Toolkit, react-paginate, React Router
 
 ## Установка и запуск
 
-Для начала убедитесь, что у вас установлены [Node.js](https://nodejs.org/en/) и npm.
-
 1. Клонируйте репозиторий:
 ```bash
 git clone git@github.com:RitaKruglova/digicoffee-test-task.git
 cd digicoffee-test-task
 ```
-2. Установите зависимости:
+2. Запустите докер:
+
 ```bash
-npm install
+docker compose up
 ```
-3. Запустите разработческий сервер:
-```bash
-npm run dev
-```
-4. Установите и запустите бэкенд:
-https://github.com/KondratevAD/coffe_test
-5. Теперь вы можете открыть http://localhost:3000 в вашем браузере и просмотреть приложение.
