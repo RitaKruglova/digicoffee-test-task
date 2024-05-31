@@ -29,3 +29,5 @@ cd digicoffee-test-task
 ```bash
 docker compose up
 ```
+3. Открыть проект в браузере:
+Ссылка: http://localhost
