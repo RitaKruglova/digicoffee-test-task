@@ -1,0 +1,31 @@
+.container {
+  width: 385px;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+}
+
+.title, .subtitle {
+  text-align: center;
+  margin: 20px 0 0 0;
+  font-weight: 700;
+  line-height: 120%;
+  color: #1a2028;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.subtitle {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 1100px) {
+  .container {
+    width: 245px;
+    gap: 10px;
+  }
+}

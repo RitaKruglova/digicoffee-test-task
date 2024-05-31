@@ -1,11 +1,10 @@
-import { FC, useEffect, useRef, useMemo, useState, useCallback } from 'react';
+import { FC, useEffect, useRef, useMemo, useState } from 'react';
 import { Chart, ChartData, ChartOptions, registerables } from 'chart.js';
 import barChartStyles from './bar-chart.module.css';
-import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+import { useAppSelector } from '../../hooks/reduxHooks';
 import { IHourValues as IGroupingValues } from '../../utils/types';
 
 const BarChart: FC = () => {
-  const dispatch = useAppDispatch();
   const payments = useAppSelector(store => store.payments.payments);
   const filterType = useAppSelector(store => store.payments.filterType);
   const [isSum, setIsSum] = useState<boolean>(true);

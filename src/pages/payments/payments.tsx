@@ -7,6 +7,7 @@ import { fetchPayments } from '../../store/slices/paymentsSlice';
 import Table from '../../components/table/table';
 import { TPayment, TUserInfo } from '../../utils/types';
 import PieChart from '../../components/pie-chart/pie-chart';
+import Overlay from '../../components/overlay/overlay';
 
 const Payments: FC = () => {
   const dispatch = useAppDispatch();
@@ -15,6 +16,7 @@ const Payments: FC = () => {
   const exactDate = useAppSelector(store => store.payments.exactDate);
   const filterType = useAppSelector(store => store.payments.filterType);
   const payments = useAppSelector(store => store.payments.payments);
+  const isMenuOpen = useAppSelector(store => store.menu.isMenuOpen);
   const [isFiltersVisible, setIsFilterVisible] = useState<boolean>(false);
 
   function formatDate(dateString: string): string {
@@ -48,6 +50,7 @@ const Payments: FC = () => {
 
   return (
     <section className={paymentsStyles.container}>
+      {isMenuOpen && <Overlay />}
       <button
         className={paymentsStyles.showFiltersButton}
         type="button"

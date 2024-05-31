@@ -19,8 +19,8 @@ const Menu: FC = () => {
   }
 
   return (
-    <nav className={`${menuStyles.container} ${!isMenuOpen && width <= 798 ? menuStyles.hidden : ''}`}>
-      {width <= 798 && <BurgerButton isOpen={isMenuOpen} onClick={handleClick} />}
+    <nav className={`${menuStyles.container} ${!isMenuOpen && width <= 1100 ? menuStyles.hidden : ''}`}>
+      {width <= 1100 && <BurgerButton isOpen={isMenuOpen} onClick={handleClick} />}
       <h3 className={menuStyles.title}>Главное</h3>
       <NavLink
         to={profileRoute}

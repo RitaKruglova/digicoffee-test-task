@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 import pieChartStyles from './pie-chart.module.css';
-import { Interface } from 'readline';
 
 interface IPieChartProps {
   items: {[key: string]: number};
@@ -21,9 +20,9 @@ const PieChart: FC<IPieChartProps> = ({ items, header }) => {
     ],
   };
   return (
-    <div>
-      <h2>{header}</h2>
-      <h2>Всего {total} RUB</h2>
+    <div className={pieChartStyles.container}>
+      <h2 className={pieChartStyles.title}>{header}</h2>
+      <h3 className={pieChartStyles.subtitle}>Всего {total} RUB</h3>
       <Doughnut data={data} />
     </div>
   );
