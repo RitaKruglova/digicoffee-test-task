@@ -2,12 +2,16 @@
   width: 791px;
   margin-left: 16px;
   margin-top: 50px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   z-index: 0;
 }
 
 @media screen and (max-width: 1100px) {
   .container {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
   }
 }

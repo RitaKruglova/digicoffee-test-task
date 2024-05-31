@@ -1,5 +1,8 @@
 .container {
+  -webkit-box-shadow: 0 0 1px 0 rgba(9, 30, 66, 0.31), 0 3px 8px 0 rgba(9, 30, 66, 0.16);
   box-shadow: 0 0 1px 0 rgba(9, 30, 66, 0.31), 0 3px 8px 0 rgba(9, 30, 66, 0.16);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   height: 352px;
   width: 790px;

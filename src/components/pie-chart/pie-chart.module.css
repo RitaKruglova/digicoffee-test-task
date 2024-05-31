@@ -1,9 +1,11 @@
 .container {
   width: 385px;
+  -webkit-box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.15);
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.15);
   padding: 20px;
   margin-top: 30px;
   margin-bottom: 30px;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
